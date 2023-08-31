@@ -1,5 +1,5 @@
 # MCDDPM
-_Article title:A multi-condition diffusion model controls the reconstruction of 3D digital rocks_  
+_Article title: A multi-condition diffusion model controls the reconstruction of 3D digital rocks_  
 _Journal title: Computers and Geosciences_
 ## Description
 ![MCDDPM](https://github.com/luoxinggyyy/MCDDPM/blob/main/22.png)
