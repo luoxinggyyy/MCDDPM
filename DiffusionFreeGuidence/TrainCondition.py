@@ -52,7 +52,7 @@ class MyDataset(Dataset):
         self.transform = transform 
         self.images = os.listdir(self.path_dir)
 
-    def __len__(self):#返回整个数据集的大小
+    def __len__(self):
         return len(self.images)
 
     def __getitem__(self,index):
