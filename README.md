@@ -2,13 +2,13 @@
 _Article title:A multi-condition diffusion model controls the reconstruction of 3D digital rocks_
 _Journal title: Computers and Geosciences_
 ## Description
-![](https://github.com/luoxinggyyy/MCDDPM/blob/main/data/11.tif)
+![MCDDPM](https://github.com/luoxinggyyy/MCDDPM/blob/main/data/11.tif)
 ##  Usage
-   python+pytorch
-GPU:RTX 3060
+   `python+pytorch
+GPU:RTX 3060`
 ---
 ## installation
-   pip install requirement.txt
+   `pip install requirement.txt`
 ---
 ## test
    We provide pre-trained models for heterogeneous carbonate rocks, and if you want to try to generate digital cores, you can run `MainCondition_new`.py file while the pre-trained model is placed in the `CheckpointsCondition` folder.
