@@ -9,7 +9,7 @@ GPU:RTX 3060`
 
 ---
 ## Installation
-   pip install `requirement.txt`
+   pip install -r `requirement.txt`
    
 ---
 ## Test
