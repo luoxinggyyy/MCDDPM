@@ -2,7 +2,7 @@
 _Article title:A multi-condition diffusion model controls the reconstruction of 3D digital rocks_
 _Journal title: Computers and Geosciences_
 ## Description
-![]https://github.com/luoxinggyyy/MCDDPM/blob/main/data/11.tif
+![](https://github.com/luoxinggyyy/MCDDPM/blob/main/data/11.tif)
 ##  Usage
    python+pytorch
 GPU:RTX 3060
