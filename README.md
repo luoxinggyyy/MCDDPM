@@ -8,7 +8,7 @@ _Journal title: Computers and Geosciences_
 GPU:RTX 3060`
 ---
 ## installation
-   `pip install requirement.txt`
+   pip install `requirement.txt`
 ---
 ## test
    We provide pre-trained models for heterogeneous carbonate rocks, and if you want to try to generate digital cores, you can run `MainCondition_new`.py file while the pre-trained model is placed in the `CheckpointsCondition` folder.
