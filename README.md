@@ -5,7 +5,7 @@ _Journal title: Computers and Geosciences_
 ![MCDDPM](https://github.com/luoxinggyyy/MCDDPM/blob/main/22.png)
 ##  Usage
    `python+pytorch
-GPU:RTX 3060`
+   GPU:RTX 3060 and 3060+`
 
 ---
 ## Installation
