@@ -46,42 +46,40 @@ def save_3d(a,now,path):
     # p.save_graphic('training_samples.pdf',raster=False, painter=False)
     # p.screenshot(path, transparent_background=True)
     return p
-class MyDataset(Dataset): #继承Dataset
-    def __init__(self, path_dir, transform=None): #初始化一些属性
-        self.path_dir = path_dir #文件路径
-        self.transform = transform #对图形进行处理，如标准化、截取、转换等
-        self.images = os.listdir(self.path_dir)#把路径下的所有文件放在一个列表中
+class MyDataset(Dataset): 
+    def __init__(self, path_dir, transform=None): 
+        self.path_dir = path_dir 
+        self.transform = transform 
+        self.images = os.listdir(self.path_dir)
 
     def __len__(self):#返回整个数据集的大小
         return len(self.images)
 
-    def __getitem__(self,index):#根据索引index返回图像及标签
-        image_index = self.images[index]#根据索引获取图像文件名称
-        img_path = os.path.join(self.path_dir, image_index)#获取图像的路径或目录
-        img = Image.open(img_path).convert('RGB')# 读取图像
+    def __getitem__(self,index):
+        image_index = self.images[index]
+        img_path = os.path.join(self.path_dir, image_index)
+        img = Image.open(img_path).convert('RGB')
 
-        # 根据目录名称获取图像标签（cat或dog）
+    
         label = img_path.split('\\')[-1]
         label = label.strip('png')[:-1]
         # label = label.split('.')[:-1]
         label = np.float32(label)
-        #把字符转换为数字cat-0，dog-1
-        # label = 1 if 'dog' in label else 0
         if self.transform is not None:
             img = self.transform(img)
         return img,label
-class MyDataset3d(Dataset): #继承Dataset
-    def __init__(self, path_dir): #初始化一些属性
-        self.path_dir = path_dir #文件路径
-        self.images = os.listdir(self.path_dir)#把路径下的所有文件放在一个列表中
+class MyDataset3d(Dataset): 
+    def __init__(self, path_dir): 
+        self.path_dir = path_dir 
+        self.images = os.listdir(self.path_dir)
 
-    def __len__(self):#返回整个数据集的大小
+    def __len__(self):
         return len(self.images)
 
-    def __getitem__(self,index):#根据索引index返回图像及标签
-        image_index = self.images[index]#根据索引获取图像文件名称
-        img_path = os.path.join(self.path_dir, image_index)#获取图像的路径或目录
-        img = np.load(img_path)# 读取图像
+    def __getitem__(self,index):
+        image_index = self.images[index]
+        img_path = os.path.join(self.path_dir, image_index)
+        img = np.load(img_path)
         img   = np.array(img, dtype=np.float32)
         label = img_path.split('/')[-1]
         label = label.strip('npy')[:-1]
@@ -163,14 +161,6 @@ def train(modelConfig: Dict):
             epoch_loss/= (i+1)
             epoch_losses.append(epoch_loss)
  
-    # Loss0 = np.array(epoch_losses)
-    # np.save('./show/e_{}'.format(e),Loss0) 
-    # plt.figure()                   # 设置图片信息 例如：plt.figure(num = 2,figsize=(640,480))
-    # plt.plot(epoch_losses,'b',label = 'loss')        # epoch_losses 传入模型训练中的 loss[]列表,在训练过程中，先创建loss列表，将每一个epoch的loss 加进这个列表
-    # plt.ylabel('loss')
-    # plt.xlabel('epoch')
-    # plt.legend()        #个性化图例（颜色、形状等）
-    # plt.savefig(os.path.join('F:\deep-learning-code\image-generation-code\DenoisingDiffusionProbabilityModel-ddpm--main\show',"1_recon_loss.jpg"),dpi=300,bbox_inches='tight')
 
 
 def eval(modelConfig: Dict):
@@ -180,7 +170,6 @@ def eval(modelConfig: Dict):
         np.random.seed(seed)
         random.seed(seed)
         torch.backends.cudnn.deterministic = True
-# 设置随机数种子
     setup_seed(20)
     device = torch.device(modelConfig["device"])
     # load model and evaluate
@@ -205,8 +194,7 @@ def eval(modelConfig: Dict):
         noisyImage = torch.randn(
             size=[modelConfig["batch_size"], 1, 64,64,64], device=device)
         saveNoisy = torch.clamp(noisyImage * 0.5 + 0.5, 0, 1)
-        # save_image(saveNoisy, os.path.join(
-        #     modelConfig["sampled_dir"],  modelConfig["sampledNoisyImgName"]), nrow=modelConfig["nrow"])
+
         sampledImgs = sampler(noisyImage, labels,label2)
         sampledImgs1 = sampledImgs * 0.5 + 0.5  # [0 ~ 1]
         save_3d(1-sampledImgs1 , modelConfig["nrow"], dir + 'train2_'+str(modelConfig["label"])+".tif")
@@ -216,10 +204,6 @@ def eval(modelConfig: Dict):
             j = torch.squeeze(j,dim = 1).cpu().numpy()
             np.save(dir+str(i)+str('.npy'),j)
 
-        # save_image(sampledImgs1, os.path.join(
-        #     modelConfig["sampled_dir"],  modelConfig["sampledImgName"]), nrow=modelConfig["nrow"])
-        # save_image(grid, os.path.join(
-        #     modelConfig["sampled_dir"],  modelConfig["sampledImgName1"]), nrow=modelConfig["nrow"])
         bb = []
         for i,j in enumerate(sampledImgs1):
             k = torch.mean(j)
@@ -228,7 +212,7 @@ def eval(modelConfig: Dict):
             # save_image(j, os.path.join(
             # modelConfig["sampled_dir"],  str(f'{real_label}_{b}.png')))
             # save_3d(j , modelConfig["nrow"], modelConfig["sampled_dir"], modelConfig["sampledImgName"])
-            bb.append(b) # 将计算的孔隙度储存在bb变量里
+            bb.append(b) 
         real_label1 = np.round(1-labels.cpu().numpy(),3)
         cc = list(zip(real_label1,bb))
         data1 = pd.DataFrame(cc)
