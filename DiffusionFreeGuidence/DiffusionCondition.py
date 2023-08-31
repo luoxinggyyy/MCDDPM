@@ -17,7 +17,7 @@ class DiceLoss(nn.Module):
         pre = torch.sigmoid(predict).view(num, -1)
         tar = target.view(num, -1)
         
-        intersection = (pre * tar).sum(-1).sum()  #利用预测值与标签相乘当作交集
+        intersection = (pre * tar).sum(-1).sum()  
         union = (pre + tar).sum(-1).sum()
         
         score = 1 - 2 * (intersection + self.epsilon) / (union + self.epsilon)
