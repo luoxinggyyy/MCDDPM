@@ -4,7 +4,7 @@ _Journal title: Computers and Geosciences_
 ## Description
 ![MCDDPM](https://github.com/luoxinggyyy/MCDDPM/blob/main/22.png)
 ##  Usage
-`python+pytorch  GPU:RTX 3060 or 3060+`
+python+pytorch  GPU:RTX 3060 or 3060+
 
 ---
 ## Installation
