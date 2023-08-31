@@ -1,28 +1,29 @@
 # MCDDPM
 _Article title:A multi-condition diffusion model controls the reconstruction of 3D digital rocks_
 _Journal title: Computers and Geosciences_
-
+## Description
+!
 ##  Usage
-python+pytorch
+  python+pytorch
 GPU:RTX 3060
 ---
 ## installation
-pip install requirement.txt
+  pip install requirement.txt
 ---
 ## test
-We provide pre-trained models for heterogeneous carbonate rocks, and if you want to try to generate digital cores, you can run `MainCondition_new`.py file while the pre-trained model is placed in the `CheckpointsCondition` folder.
+  We provide pre-trained models for heterogeneous carbonate rocks, and if you want to try to generate digital cores, you can run `MainCondition_new`.py file while the pre-trained model is placed in the `CheckpointsCondition` folder.
 The generated result will be saved in the `npydata` folder.
 ---
 ## train
-Please run `MainCondition_new.py` and change the 'state' to 'train' and 'path' to the location of your dataset in `MainCondition_new.py`.
+  Please run `MainCondition_new.py` and change the 'state' to 'train' and 'path' to the location of your dataset in `MainCondition_new.py`.
 ### train description
-Regarding the training parameters in `MainCondition_new.py`, 'epoch' represents the number of training iterations, 'batch_size' refers to the number of training batches, and 'T' represents the time step in the diffusion model equation, typically set to 1000. A value of 500 will result in lower resolution effects. 'channel' represents the number of channels to adjust based on hardware requirements. 'label' corresponds to the porosity parameter, 'labelA' represents the average pore diameter, and 'labelB' represents the standard deviation of pore diameter. For a description of other parameters, please refer to the paper.
+  Regarding the training parameters in `MainCondition_new.py`, 'epoch' represents the number of training iterations, 'batch_size' refers to the number of training batches, and 'T' represents the time step in the diffusion model equation, typically set to 1000. A value of 500 will result in lower resolution effects. 'channel' represents the number of channels to adjust based on hardware requirements. 'label' corresponds to the porosity parameter, 'labelA' represents the average pore diameter, and 'labelB' represents the standard deviation of pore diameter. For a description of other parameters, please refer to the paper.
 ---
 ## Acknowledgements
-Although we have proposed a relatively new approach, the initial idea and design were inspired by (https://video-diffusion.github.io/), and the code structure was inspired by （https://github.com/zoubohao/DenoisingDiffusionProbabilityModel-ddpm-/tree/main）
+  Although we have proposed a relatively new approach, the initial idea and design were inspired by (https://video-diffusion.github.io/), and the code structure was inspired by （https://github.com/zoubohao/DenoisingDiffusionProbabilityModel-ddpm-/tree/main）
 ---
 ## License
-meanderpy is licensed under the Apache License 2.0.
+  meanderpy is licensed under the Apache License 2.0.
 ---
 
 
