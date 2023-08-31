@@ -4,7 +4,7 @@ import pandas as pd
 from plotnine import ggplot, aes, geom_line,geom_point
 a = np.load('./show/e_69.npy')
 
-## 保存为csv文件
+## 
 # np_to_csv = pd.DataFrame(data = a)
 # np_to_csv.to_csv('np_to_csv.csv'
 # )
